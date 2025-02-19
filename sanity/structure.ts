@@ -1,11 +1,31 @@
 import type { StructureResolver } from "sanity/structure";
-import { LuHouse, LuImages, LuMenu, LuImage, LuUser } from "react-icons/lu";
+import {
+  LuHouse,
+  LuImages,
+  LuMenu,
+  LuImage,
+  LuUser,
+  LuFileText,
+  LuNavigation,
+} from "react-icons/lu";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
   S.list()
     .title("SEVALAND")
     .items([
+      S.listItem({
+        id: "metadata",
+        icon: LuFileText,
+      })
+        .title("Metadata")
+        .child(S.document().schemaType("metadata").documentId("metadata")),
+      S.listItem({
+        id: "navigation",
+        icon: LuNavigation,
+      })
+        .title("Navigation")
+        .child(S.document().schemaType("navigation").documentId("navigation")),
       S.listItem({
         id: "home",
         icon: LuHouse,
