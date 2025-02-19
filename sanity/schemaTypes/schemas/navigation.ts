@@ -24,18 +24,26 @@ const navigation = defineType({
     }),
     defineField({
       name: "links",
-      type: "reference",
-      title: "Links",
-      to: [
-        {
-          type: "projects",
-        },
-        {
-          type: "shop",
-        },
-        {
-          type: "about",
-        },
+      type: "array",
+      title: "Navigation menu",
+      validation: (Rule) => Rule.unique(),
+      of: [
+        defineField({
+          name: "link",
+          type: "reference",
+          title: "Link",
+          to: [
+            {
+              type: "projects",
+            },
+            {
+              type: "shop",
+            },
+            {
+              type: "about",
+            },
+          ],
+        }),
       ],
     }),
   ],

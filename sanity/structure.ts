@@ -1,12 +1,13 @@
 import type { StructureResolver } from "sanity/structure";
 import {
-  LuHouse,
-  LuImages,
-  LuMenu,
-  LuImage,
-  LuUser,
   LuFileText,
   LuNavigation,
+  LuHouse,
+  LuImages,
+  LuImage,
+  LuMenu,
+  LuUser,
+  LuShoppingCart,
 } from "react-icons/lu";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
@@ -47,7 +48,7 @@ export const structure: StructureResolver = (S) =>
               })
                 .title("Menu")
                 .child(
-                  S.document().schemaType("project").documentId("project"),
+                  S.document().schemaType("projects").documentId("projects"),
                 ),
               S.listItem({
                 id: "project",
@@ -59,6 +60,12 @@ export const structure: StructureResolver = (S) =>
                 ),
             ]),
         ),
+      S.listItem({
+        id: "shop",
+        icon: LuShoppingCart,
+      })
+        .title("Shop")
+        .child(S.document().schemaType("shop").documentId("shop")),
       S.listItem({
         id: "about",
         icon: LuUser,
