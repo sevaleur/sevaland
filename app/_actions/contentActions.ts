@@ -7,12 +7,9 @@ export const getContent = async ({
   params,
 }: {
   type: string;
-  params?: JSON | undefined;
+  params?: string;
 }) => {
-  console.log({ params });
-  const query = `*[_type == "${type}"] ${params ? { params } : " "}`;
-  console.log(query);
+  const query = `*[_type == "${type}"] ${params ? params : " "}`;
   const content = await client.fetch(query);
-  console.log(content);
   return content;
 };

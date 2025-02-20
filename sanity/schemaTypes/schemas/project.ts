@@ -10,6 +10,12 @@ const project = defineType({
       type: "string",
       title: "Title",
     }),
+    defineField({
+      name: "slug",
+      type: "slug",
+      title: "Slug",
+      validation: (Rule) => Rule.required(),
+    }),
   ],
 });
 

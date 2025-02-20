@@ -10,6 +10,27 @@ const projects = defineType({
       type: "string",
       title: "Title",
     }),
+    defineField({
+      name: "projects",
+      type: "array",
+      title: "Projects",
+      validation: (Rule) => Rule.min(1).unique(),
+      of: [
+        defineField({
+          name: "link",
+          type: "reference",
+          title: "Project",
+          to: [
+            {
+              type: "project",
+            },
+          ],
+        }),
+      ],
+      options: {
+        layout: "list",
+      },
+    }),
   ],
 });
 
