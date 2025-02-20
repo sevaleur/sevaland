@@ -1,7 +1,7 @@
 import { defineType, defineField } from "sanity";
 
 const nfts = defineType({
-  name: "nfts",
+  name: "NFTs",
   type: "document",
   title: "NFTs",
   fields: [

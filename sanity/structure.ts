@@ -72,7 +72,7 @@ export const structure: StructureResolver = (S) =>
         icon: LuBitcoin,
       })
         .title("NFTs")
-        .child(S.document().schemaType("nfts").documentId("nfts")),
+        .child(S.document().schemaType("NFTs").documentId("NFTs")),
       S.listItem({
         id: "about",
         icon: LuUser,

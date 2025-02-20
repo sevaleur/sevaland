@@ -15,18 +15,6 @@ const metadata = defineType({
       type: "string",
       title: "Description",
     }),
-    defineField({
-      name: "image",
-      type: "image",
-      title: "Image",
-      fields: [
-        defineField({
-          name: "alt",
-          type: "string",
-          title: "Alternative text",
-        }),
-      ],
-    }),
   ],
 });
 

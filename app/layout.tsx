@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Sevaland",
+  title: "SEVALAND",
   description: "Film photography",
 };
 
