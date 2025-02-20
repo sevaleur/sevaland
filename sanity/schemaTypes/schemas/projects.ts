@@ -14,6 +14,7 @@ const projects = defineType({
       name: "projects",
       type: "array",
       title: "Projects",
+      options: { layout: "list" },
       validation: (Rule) => Rule.min(1).unique(),
       of: [
         defineField({
@@ -27,9 +28,6 @@ const projects = defineType({
           ],
         }),
       ],
-      options: {
-        layout: "list",
-      },
     }),
   ],
 });

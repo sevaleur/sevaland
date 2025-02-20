@@ -9,7 +9,7 @@ export const getContent = async ({
   type: string;
   params?: string;
 }) => {
-  const query = `*[_type == "${type}"] ${params ? params : " "}`;
+  const query = `*[_type==${type}] ${params ? params : " "}`;
   const content = await client.fetch(query);
   return content;
 };

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getContent } from "@/app/_actions/contentActions";
 
 const Navigation = async () => {
-  const content = (await getContent({ type: "navigation" }))[0];
+  const content = (await getContent({ type: `"navigation"` }))[0];
 
   return (
     <nav className="w-full p-4 fixed top-0 left-0">
@@ -15,7 +15,7 @@ const Navigation = async () => {
           {content.links &&
             content.links.map((link: Record<PropertyKey, string>) => (
               <li key={link._key}>
-                <Link href={link._ref}>
+                <Link href={`/${link._ref}`}>
                   <p className="capitalize">{link._ref}</p>
                 </Link>
               </li>

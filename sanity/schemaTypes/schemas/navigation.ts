@@ -23,6 +23,11 @@ const navigation = defineType({
       ],
     }),
     defineField({
+      name: "email",
+      type: "email",
+      title: "Email",
+    }),
+    defineField({
       name: "links",
       type: "array",
       title: "Navigation menu",
@@ -38,6 +43,9 @@ const navigation = defineType({
             },
             {
               type: "shop",
+            },
+            {
+              type: "nfts",
             },
             {
               type: "about",

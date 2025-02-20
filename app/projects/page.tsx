@@ -5,8 +5,8 @@ import Link from "next/link";
 const Page = async () => {
   const content = (
     await getContent({
-      type: "projects",
-      params: "{ ..., projects[]-> }",
+      type: `"projects"`,
+      params: "{ ..., projects[]->{ title, _id, 'slug': slug.current } }",
     })
   )[0];
 
@@ -20,7 +20,7 @@ const Page = async () => {
         {content.projects &&
           content.projects.map((project: Record<PropertyKey, string>) => (
             <div key={project._id}>
-              <Link href={`/projects/${project.slug.current}`}>
+              <Link href={`/projects/${project.slug}`}>
                 <h2>{project.title}</h2>
               </Link>
             </div>
