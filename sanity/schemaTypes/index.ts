@@ -6,9 +6,8 @@ import home from "./schemas/home";
 import projects from "./schemas/projects";
 import project from "./schemas/project";
 import shop from "./schemas/shop";
-import nfts from "./schemas/nfts";
 import about from "./schemas/about";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [metadata, navigation, home, projects, project, shop, nfts, about],
+  types: [metadata, navigation, home, projects, project, shop, about],
 };

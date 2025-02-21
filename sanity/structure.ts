@@ -8,7 +8,6 @@ import {
   LuMenu,
   LuUser,
   LuShoppingCart,
-  LuBitcoin,
 } from "react-icons/lu";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
@@ -67,12 +66,6 @@ export const structure: StructureResolver = (S) =>
       })
         .title("Shop")
         .child(S.document().schemaType("shop").documentId("shop")),
-      S.listItem({
-        id: "nfts",
-        icon: LuBitcoin,
-      })
-        .title("NFTs")
-        .child(S.document().schemaType("NFTs").documentId("NFTs")),
       S.listItem({
         id: "about",
         icon: LuUser,

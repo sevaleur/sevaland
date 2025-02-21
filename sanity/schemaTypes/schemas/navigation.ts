@@ -45,9 +45,6 @@ const navigation = defineType({
               type: "shop",
             },
             {
-              type: "NFTs",
-            },
-            {
               type: "about",
             },
           ],
