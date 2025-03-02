@@ -1,9 +1,6 @@
 import { getContent } from "@/app/_actions/contentActions";
-import { getImageDimensions } from "@sanity/asset-utils";
-import { urlFor } from "@/sanity/lib/image";
 
-import Link from "next/link";
-import Image from "next/image";
+import ColumnMenu from "@/app/_ui/ColumnMenu";
 
 const Page = async () => {
   const content = (
@@ -14,42 +11,29 @@ const Page = async () => {
     })
   )[0];
 
-  console.log(content.projects);
+  const title = content?.title?.split(/\s/g);
 
   return (
     <div className="h-screen w-full grid place-content-center relative">
-      <h1 className="absolute top-50 left-0 text-8xl">{content.title}</h1>
-
-      <div className="w-1/2 h-full flex flex-col gap-4">
-        {content.projects &&
-          content.projects.map((project: Record<PropertyKey, string>) => (
-            <Link href={`/projects/${project.slug}`} key={project._id}>
-              <div className="w-[20rem] h-full p-4 relative">
-                <div className="absolute top-4 -right-2 vertical-writing-lr orientation-sideways">
-                  <h2>{project.title}</h2>
-                </div>
-                <div className="absolute bottom-4 -left-2 vertical-writing-lr orientation-sideways">
-                  <p>{project.yop}</p>
-                </div>
-                <figure className="h-full w-full">
-                  <Image
-                    className="h-full w-full object-cover"
-                    alt={project.alt}
-                    src={urlFor(project.preview).url()}
-                    width={getImageDimensions(project.preview).width}
-                    height={getImageDimensions(project.preview).height}
-                    placeholder="blur"
-                    blurDataURL={urlFor(project.preview)
-                      .width(24)
-                      .height(24)
-                      .blur(10)
-                      .url()}
-                  />
-                </figure>
-              </div>
-            </Link>
-          ))}
+      <div className="flex flex-col fixed bottom-0 left-10 p-4">
+        <div className="absolute left-16 top-0">
+          <p>[{content.projects.length}]</p>
+        </div>
+        <div className="h-fit w-[30rem]">
+          <h1 className="h-full w-full text-8xl flex flex-col uppercase">
+            {title &&
+              title.map((t: string) => (
+                <span className="first:self-end last:self-start" key={t}>
+                  {t}
+                </span>
+              ))}
+          </h1>
+        </div>
+        <div className="absolute bottom-6 right-10">
+          <p>view all</p>
+        </div>
       </div>
+      <ColumnMenu data={content.projects} />
     </div>
   );
 };

@@ -6,13 +6,8 @@ const projects = defineType({
   title: "Projects",
   fields: [
     defineField({
-      name: "schemaTitle",
-      type: "string",
-      title: "Schema Title",
-    }),
-    defineField({
       name: "title",
-      type: "text",
+      type: "string",
       title: "Title",
     }),
     defineField({
