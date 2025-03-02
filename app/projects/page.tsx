@@ -1,6 +1,6 @@
 import { getContent } from "@/app/_actions/contentActions";
-import { urlFor } from "@/sanity/lib/image";
 import { getImageDimensions } from "@sanity/asset-utils";
+import { urlFor } from "@/sanity/lib/image";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -10,7 +10,7 @@ const Page = async () => {
     await getContent({
       type: `"projects"`,
       params:
-        "{ ..., projects[]->{ title, _id, 'slug': slug.current, 'preview': gallery[0], gear } }",
+        "{ ..., projects[]->{ title, _id, 'slug': slug.current, 'preview': gallery[0].asset._ref, 'alt': gallery[0].alt, yop } }",
     })
   )[0];
 
@@ -24,23 +24,22 @@ const Page = async () => {
         {content.projects &&
           content.projects.map((project: Record<PropertyKey, string>) => (
             <Link href={`/projects/${project.slug}`} key={project._id}>
-              <div className="h-[10rem] w-full p-4">
-                <div>
+              <div className="w-[20rem] h-full p-4 relative">
+                <div className="absolute top-4 -right-2 vertical-writing-lr orientation-sideways">
                   <h2>{project.title}</h2>
                 </div>
-                <div>
-                  <p>{project.gear.films[0]}</p>
+                <div className="absolute bottom-4 -left-2 vertical-writing-lr orientation-sideways">
+                  <p>{project.yop}</p>
                 </div>
                 <figure className="h-full w-full">
                   <Image
-                    alt={project.preview.alt}
-                    src={urlFor(project.preview.asset._ref).url()}
-                    width={getImageDimensions(project.preview.asset._ref).width}
-                    height={
-                      getImageDimensions(project.preview.asset._ref).height
-                    }
+                    className="h-full w-full object-cover"
+                    alt={project.alt}
+                    src={urlFor(project.preview).url()}
+                    width={getImageDimensions(project.preview).width}
+                    height={getImageDimensions(project.preview).height}
                     placeholder="blur"
-                    blurDataURL={urlFor(project.preview.asset._ref)
+                    blurDataURL={urlFor(project.preview)
                       .width(24)
                       .height(24)
                       .blur(10)

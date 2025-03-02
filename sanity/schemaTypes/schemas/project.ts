@@ -22,6 +22,11 @@ const project = defineType({
       title: "Description",
     }),
     defineField({
+      name: "yop",
+      type: "string",
+      title: "Year of production",
+    }),
+    defineField({
       name: "gear",
       type: "object",
       title: "Gear",

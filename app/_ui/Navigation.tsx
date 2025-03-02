@@ -9,7 +9,7 @@ const Navigation = async () => {
   const content = (await getContent({ type: `"navigation"` }))[0];
 
   return (
-    <nav className="w-full p-8 fixed top-0 left-0">
+    <nav className="w-full p-8 fixed top-0 left-0 z-50">
       <div className="w-full flex justify-between">
         <Link href="/">
           {content.logo.asset ? (

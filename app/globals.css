@@ -3,19 +3,48 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #c3c2c0;
+  --foreground: #9a8f83;
+  --textcolor: #31302e;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #31302e;
+    --foreground: #9a8f83;
+    --textcolor: #c3c2c0;
   }
 }
 
 body {
-  color: var(--foreground);
+  color: var(--textcolor);
   background: var(--background);
   font-family: var(--font-poppins);
+}
+
+@layer utilities {
+  .orientation-sideways {
+    text-orientation: sideways;
+  }
+  .orientation-upright {
+    text-orientation: upright;
+  }
+  .orientation-mixed {
+    text-orientation: mixed;
+  }
+  .orientation-sideways-right {
+    text-orientation: sideways-right;
+  }
+  .orientation-glyph {
+    text-orientation: use-glyph-orientation;
+  }
+  .vertical-writing-lr {
+    writing-mode: vertical-lr;
+  }
+  .vertical-writing-rl {
+    writing-mode: vertical-rl;
+  }
+  .horizontal-writing-tb {
+    writing-mode: horizontal-tb;
+  }
 }
