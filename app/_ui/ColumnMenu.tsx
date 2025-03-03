@@ -1,8 +1,13 @@
 import { getImageDimensions } from "@sanity/asset-utils";
 import { urlFor } from "@/sanity/lib/image";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 import Link from "next/link";
 import Image from "next/image";
+import gsap from "gsap";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const ColumnMenu = ({ data }: { data: Array<Record<PropertyKey, string>> }) => {
   return (
