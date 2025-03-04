@@ -1,6 +1,7 @@
-import { getContent } from "@/app/_actions/contentActions";
+import ColumnElement from "@/app/_ui/ColumnElement";
+import MenuTitle from "@/app/_ui/MenuTitle";
 
-import ColumnMenu from "@/app/_ui/ColumnMenu";
+import { getContent } from "@/app/_actions/contentActions";
 
 const Page = async () => {
   const content = (
@@ -15,25 +16,26 @@ const Page = async () => {
 
   return (
     <div className="h-screen w-full grid place-content-center relative">
-      <div className="flex flex-col fixed bottom-0 left-10 p-4">
-        <div className="absolute left-16 top-0">
-          <p>[{content.projects.length}]</p>
-        </div>
-        <div className="h-fit w-[30rem]">
-          <h1 className="h-full w-full text-8xl flex flex-col uppercase">
-            {title &&
-              title.map((t: string) => (
-                <span className="first:self-end last:self-start" key={t}>
-                  {t}
-                </span>
-              ))}
-          </h1>
-        </div>
-        <div className="absolute bottom-6 right-10">
-          <p>view all</p>
+      <MenuTitle
+        length={content.projects.length}
+        title={title}
+        link="view all"
+      />
+      <div className="w-fit h-full relative">
+        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-[195px] w-fit h-fit  flex flex-col gap-4 ">
+          {content.projects &&
+            content.projects.map((obj: Record<PropertyKey, string>) => (
+              <ColumnElement
+                key={obj._id}
+                slug={obj.slug}
+                title={obj.title}
+                description={obj.yop}
+                alt={obj.alt}
+                image={obj.preview}
+              />
+            ))}
         </div>
       </div>
-      <ColumnMenu data={content.projects} />
     </div>
   );
 };

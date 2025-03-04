@@ -4,7 +4,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 
 import Navigation from "@/app/_ui/Navigation";
-import SmoothScroller from "@/app/_components/Lenis";
+import LenisScrollProvider from "@/app/_providers/lenis-provider";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -27,8 +27,7 @@ export default function RootLayout({
       <body className={`${poppins.variable} antialiased`}>
         <Navigation />
         <main>
-          <SmoothScroller />
-          {children}
+          <LenisScrollProvider>{children}</LenisScrollProvider>
         </main>
       </body>
     </html>
