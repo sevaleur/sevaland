@@ -23,18 +23,22 @@ const MenuTitle = ({
   const { contextSafe } = useGSAP(
     () => {
       tl.current = gsap.timeline({
-        duration: 0.8,
+        duration: 0.4,
         ease: "power2.inOut",
         paused: true,
       });
 
-      tl.current?.to(border, { scaleX: 1 });
+      tl.current?.to(border.current, { scaleX: 1.0 });
     },
     { scope: container },
   );
 
   const handleMouseOver = contextSafe(() => {
     tl.current?.play();
+  });
+
+  const handleMouseLeave = contextSafe(() => {
+    tl.current?.reverse();
   });
 
   return (
@@ -53,9 +57,10 @@ const MenuTitle = ({
         </h1>
       </div>
       <div
-        className="absolute bottom-6 right-10"
+        className="absolute bottom-6 right-10 cursor-pointer"
         ref={container}
         onMouseOver={handleMouseOver}
+        onMouseLeave={handleMouseLeave}
       >
         <p>{link}</p>
         <div
