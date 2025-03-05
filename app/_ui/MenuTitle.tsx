@@ -18,7 +18,7 @@ const MenuTitle = ({
 
   const container = useRef(null);
   const border = useRef(null);
-  const tl = useRef();
+  const tl = useRef<GSAPTimeline | null>(null);
 
   const { contextSafe } = useGSAP(
     () => {

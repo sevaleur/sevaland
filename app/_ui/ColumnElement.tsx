@@ -27,7 +27,7 @@ const ColumnElement = ({
 
   const container = useRef(null);
   const element = useRef(null);
-  const timeline = useRef();
+  const timeline = useRef<GSAPTimeline | null>(null);
 
   useGSAP(
     () => {
