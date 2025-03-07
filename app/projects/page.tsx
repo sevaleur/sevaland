@@ -1,4 +1,4 @@
-import ColumnElement from "@/app/_ui/ColumnElement";
+import ColumnMenu from "@/app/_ui/ColumnMenu";
 import MenuTitle from "@/app/_ui/MenuTitle";
 
 import { getContent } from "@/app/_actions/contentActions";
@@ -22,19 +22,7 @@ const Page = async () => {
         link="view all"
       />
       <div className="w-fit h-full relative">
-        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-[195px] w-fit h-fit  flex flex-col gap-4 ">
-          {content.projects &&
-            content.projects.map((obj: Record<PropertyKey, string>) => (
-              <ColumnElement
-                key={obj._id}
-                slug={obj.slug}
-                title={obj.title}
-                description={obj.yop}
-                alt={obj.alt}
-                image={obj.preview}
-              />
-            ))}
-        </div>
+        <ColumnMenu data={content.projects} />
       </div>
     </div>
   );

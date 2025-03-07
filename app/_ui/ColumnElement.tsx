@@ -1,13 +1,12 @@
 "use client";
 
-import gsap from "gsap";
 import Link from "next/link";
 import Image from "next/image";
+import gsap from "gsap";
 
 import { useRef } from "react";
 import { getImageDimensions } from "@sanity/asset-utils";
 import { urlFor } from "@/sanity/lib/image";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 const ColumnElement = ({
@@ -23,38 +22,52 @@ const ColumnElement = ({
   alt: string;
   image: string;
 }) => {
-  gsap.registerPlugin(ScrollTrigger, useGSAP);
+  gsap.registerPlugin(useGSAP);
 
-  const container = useRef(null);
-  const element = useRef(null);
-  const timeline = useRef<GSAPTimeline | null>(null);
+  const containerRef = useRef(null);
+  const imageRef = useRef(null);
+  const timelineRef = useRef<GSAPTimeline | null>(null);
 
-  useGSAP(
+  const { contextSafe } = useGSAP(
     () => {
-      timeline.current = gsap.timeline({
-        scrollTrigger: {
-          trigger: element.current,
-          scrub: true,
-          start: "top bottom",
-          end: "+=500px",
-        },
+      timelineRef.current = gsap.timeline({
+        duration: 0.4,
+        ease: "power2.inOut",
+        paused: true,
       });
 
-      timeline.current?.from(element.current, { scaleX: 0.8 });
+      timelineRef.current?.fromTo(
+        imageRef.current,
+        { scale: 0.95 },
+        { scale: 1.0 },
+      );
     },
-    { scope: container },
+    { scope: containerRef },
   );
 
+  const handleMouseEnter = contextSafe(() => {
+    timelineRef.current?.play();
+  });
+
+  const handleMouseLeave = contextSafe(() => {
+    timelineRef.current?.reverse();
+  });
+
   return (
-    <Link href={`/projects/${slug}`} ref={container}>
-      <div className="w-[25rem] h-full p-4 relative">
-        <div className="absolute top-4 -right-2 vertical-writing-lr orientation-sideways">
+    <Link
+      href={`/projects/${slug}`}
+      ref={containerRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="w-[25rem] h-full relative">
+        <div className="absolute top-6 -right-6 vertical-writing-lr orientation-sideways">
           <h2>{title}</h2>
         </div>
-        <div className="absolute bottom-4 -left-2 vertical-writing-lr orientation-sideways -scale-[1]">
+        <div className="absolute bottom-6 -left-6 vertical-writing-lr orientation-sideways -scale-[1]">
           <p>{description}</p>
         </div>
-        <figure className="h-full w-full" ref={element}>
+        <figure className="h-full w-full" ref={imageRef}>
           <Image
             className="h-full w-full object-cover"
             alt={alt}
