@@ -67,7 +67,7 @@ const MenuTitle = ({
       >
         <Link href={link}>{text}</Link>
         <div
-          className="h-[1px] w-full bg-black dark:bg-white origin-left scale-x-0"
+          className="h-[1px] w-full bg-black origin-left scale-x-0"
           ref={border}
         />
       </div>

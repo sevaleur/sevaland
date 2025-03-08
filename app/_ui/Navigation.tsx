@@ -39,6 +39,11 @@ const Navigation = async () => {
               </Link>
             </li>
           ))}
+        <li>
+          <a href={`mailto:${content.email}`} target="_blank">
+            Contact
+          </a>
+        </li>
       </ul>
     </nav>
   );

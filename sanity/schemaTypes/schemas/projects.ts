@@ -29,6 +29,11 @@ const projects = defineType({
         }),
       ],
     }),
+    defineField({
+      name: "description",
+      type: "text",
+      title: "Description",
+    }),
   ],
 });
 

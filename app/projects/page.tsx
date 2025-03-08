@@ -22,11 +22,11 @@ const Page = async () => {
         link="/showall"
         text="view all"
       />
-      <div className="w-fit h-full relative">
+      <div className="w-fit h-full relative ">
         <ColumnMenu data={content.projects} />
       </div>
-      <div className="text-8xl fixed right-6 bottom-0">
-        <p>scroll</p>
+      <div className="text-md fixed right-28 top-[50%]">
+        <p>{content.description}</p>
       </div>
     </div>
   );

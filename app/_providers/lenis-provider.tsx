@@ -7,6 +7,7 @@ import gsap from "gsap";
 const LenisScrollProvider = ({ children }: { children: React.ReactNode }) => {
   const lenisRef = useRef(null);
 
+  // CAUSES LAG OVER TIME *** FIX ***
   /* useEffect(() => {
     function update(time: number) {
       lenisRef.current?.lenis?.raf(time * 1000);

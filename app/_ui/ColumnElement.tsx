@@ -61,11 +61,11 @@ const ColumnElement = ({
       onMouseLeave={handleMouseLeave}
     >
       <div className="w-[25rem] h-full relative">
-        <div className="absolute top-6 -right-6 vertical-writing-lr orientation-sideways">
+        <div className="absolute top-6 -right-6 vertical-writing-lr orientation-sideways uppercase text-lg z-10">
           <h2>{title}</h2>
         </div>
         <div className="absolute bottom-6 -left-6 vertical-writing-lr orientation-sideways -scale-[1]">
-          <p>{description}</p>
+          <p>[{description}]</p>
         </div>
         <figure className="h-full w-full" ref={imageRef}>
           <Image
