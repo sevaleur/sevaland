@@ -1,6 +1,7 @@
 "use client";
 
 import gsap from "gsap";
+import Link from "next/link";
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
@@ -9,10 +10,12 @@ const MenuTitle = ({
   length,
   title,
   link,
+  text,
 }: {
   length: number;
   title: Array<string>;
   link: string;
+  text: string;
 }) => {
   gsap.registerPlugin(useGSAP);
 
@@ -57,14 +60,14 @@ const MenuTitle = ({
         </h1>
       </div>
       <div
-        className="absolute bottom-6 right-10 cursor-pointer"
+        className="absolute bottom-6 right-10"
         ref={container}
         onMouseOver={handleMouseOver}
         onMouseLeave={handleMouseLeave}
       >
-        <p>{link}</p>
+        <Link href={link}>{text}</Link>
         <div
-          className="h-[1px] w-full bg-white origin-left scale-x-0"
+          className="h-[1px] w-full bg-black dark:bg-white origin-left scale-x-0"
           ref={border}
         />
       </div>

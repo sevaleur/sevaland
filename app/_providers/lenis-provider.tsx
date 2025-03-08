@@ -7,7 +7,7 @@ import gsap from "gsap";
 const LenisScrollProvider = ({ children }: { children: React.ReactNode }) => {
   const lenisRef = useRef(null);
 
-  useEffect(() => {
+  /* useEffect(() => {
     function update(time: number) {
       lenisRef.current?.lenis?.raf(time * 1000);
     }
@@ -15,7 +15,7 @@ const LenisScrollProvider = ({ children }: { children: React.ReactNode }) => {
     gsap.ticker.add(update);
 
     return () => gsap.ticker.remove(update);
-  }, []);
+  }, []); */
 
   return (
     <ReactLenis

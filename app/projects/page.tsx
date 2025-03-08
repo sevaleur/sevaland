@@ -19,10 +19,14 @@ const Page = async () => {
       <MenuTitle
         length={content.projects.length}
         title={title}
-        link="view all"
+        link="/showall"
+        text="view all"
       />
       <div className="w-fit h-full relative">
         <ColumnMenu data={content.projects} />
+      </div>
+      <div className="text-8xl fixed right-6 bottom-0">
+        <p>scroll</p>
       </div>
     </div>
   );
