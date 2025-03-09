@@ -47,6 +47,11 @@ const home = defineType({
       title: "Work Section",
       fields: [
         defineField({
+          name: "link",
+          type: "string",
+          title: "Link text",
+        }),
+        defineField({
           name: "work",
           type: "array",
           title: "Work",
@@ -63,6 +68,11 @@ const home = defineType({
                   type: "string",
                   title: "Alternative text",
                   validation: (Rule) => Rule.required(),
+                }),
+                defineField({
+                  name: "title",
+                  type: "string",
+                  title: "Project title",
                 }),
               ],
             }),
